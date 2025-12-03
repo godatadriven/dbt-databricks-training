@@ -5,6 +5,7 @@ databricks_training:
       type: databricks
       host: "{{ env_var('DBT_DATABRICKS_HOST') }}"
       http_path: "{{ env_var('DBT_DATABRICKS_HTTP_PATH') }}"
+      auth_type: pat
       token: "{{ env_var('DBT_DATABRICKS_TOKEN') }}"
       catalog: hive_metastore
       schema: dbt_training_marijn
