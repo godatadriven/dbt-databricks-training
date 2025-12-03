@@ -14,11 +14,7 @@
     }
   },
   "remoteUser": "vscode",
-  // "runArgs": ["--env-file", ".env"],
   "containerEnv": {
-    "DBT_PROFILES_DIR": "/workspaces/dbt-databricks-training",
-    "DBT_DATABRICKS_HOST": "${localEnv:DBT_DATABRICKS_HOST}",
-    "DBT_DATABRICKS_HTTP_PATH": "${localEnv:DBT_DATABRICKS_HTTP_PATH}",
-    "DBT_DATABRICKS_TOKEN": "${localEnv:DBT_DATABRICKS_TOKEN}"
+    "DBT_PROFILES_DIR": "/workspaces/dbt-databricks-training"
   }
 }
