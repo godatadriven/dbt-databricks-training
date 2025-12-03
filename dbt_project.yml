@@ -1,0 +1,13 @@
+name: 'dbt_training_project'
+version: '1.0.0'
+config-version: 2
+
+profile: 'databricks_training'
+
+model-paths: ["models"]
+
+target-path: "target"
+
+models:
+  dbt_training_project:
+    +materialized: view
