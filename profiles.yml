@@ -9,4 +9,4 @@ databricks_training:
       token: "{{ env_var('DBT_DATABRICKS_TOKEN') }}"
       catalog: hive_metastore
       schema: dbt_training_marijn
-      threads: 4
+      threads: 24
