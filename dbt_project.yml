@@ -5,6 +5,7 @@ config-version: 2
 profile: 'databricks_training'
 
 model-paths: ["models"]
+seed-paths: ["seeds"]
 
 target-path: "target"
 
