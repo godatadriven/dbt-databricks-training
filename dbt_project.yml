@@ -2,6 +2,10 @@ name: 'dbt_training_project'
 version: '1.0.0'
 config-version: 2
 
+flags:
+  use_materialization_v2: True
+  use_managed_iceberg: True
+
 profile: 'databricks_training'
 
 model-paths: ["models"]
@@ -9,6 +13,43 @@ seed-paths: ["seeds"]
 
 target-path: "target"
 
-models:
+seeds:
   dbt_training_project:
-    +materialized: view
+    raw_customers:
+      +column_types:
+        id: varchar(255)
+        name: varchar(255)
+    raw_items:
+      +column_types:
+        id: varchar(255)
+        order_id: varchar(255)
+        sku: varchar(36)
+    raw_orders:
+      +column_types:
+        id: varchar(255)
+        customer: varchar(255)
+        ordered_at: timestamp
+        store_id: varchar(255)
+        subtotal: integer
+        tax_paid: integer
+        order_total: integer
+    raw_products:
+      +column_types:
+        sku: varchar(36)
+        name: varchar(255)
+        type: varchar(255)
+        price: integer
+        description: varchar(255)
+    raw_stores:
+      +column_types:
+        id: varchar(255)
+        name: varchar(255)
+        opened_at: timestamp
+        tax_rate: decimal(10,4)
+    raw_supplies:
+      +column_types:
+        id: varchar(36)
+        name: varchar(255)
+        cost: integer
+        perishable: boolean
+        sku: varchar(36)
