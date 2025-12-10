@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: stg_order
+    description: "Staging model for order data"
+
+    columns:
+      - name: order_id
+        description: "Unique identifier for each order"
+        data_tests:
+          - not_null
+          - unique
+
+      - name: customer_id
+        description: "Identifier for the customer who placed the order"
+
+      - name: ordered_at
+        description: "Timestamp when the order was placed"
+
+      - name: store_id
+        description: "Identifier for the store where the order was placed"
+
+      - name: subtotal
+        description: "Subtotal amount for the order"
+
+      - name: tax_paid
+        description: "Tax amount paid for the order"
+
+      - name: order_total
+        description: "Total amount for the order including tax"
