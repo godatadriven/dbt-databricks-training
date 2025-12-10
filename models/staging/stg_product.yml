@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_product
+    description: "Staging model for product data"
+
+    columns:
+      - name: sku
+        description: "Stock Keeping Unit for the product"
+        data_tests:
+          - not_null
+          - unique
+
+      - name: product_name
+        description: "Name of the product"
+        data_tests:
+          - not_null
+
+      - name: product_type
+        description: "Type or category of the product"
+
+      - name: price
+        description: "Price of the product"
+
+      - name: product_description
+        description: "Description of the product"

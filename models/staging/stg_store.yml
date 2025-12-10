@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_store
+    description: "Staging model for store data"
+
+    columns:
+      - name: store_id
+        description: "Unique identifier for each store"
+        data_tests:
+          - not_null
+          - unique
+
+      - name: store_name
+        description: "Name of the store"
+        data_tests:
+          - not_null
+
+      - name: store_opened_at
+        description: "Timestamp when the store was opened"
+
+      - name: store_tax_rate
+        description: "Tax rate applicable at the geographical location of the store"

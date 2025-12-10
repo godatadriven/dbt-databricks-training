@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_item
+    description: "Staging model for item data"
+
+    columns:
+      - name: item_id
+        description: "Unique identifier for each item"
+        data_tests:
+          - not_null
+          - unique
+
+      - name: order_id
+        description: "Identifier for the order associated with the item"
+
+      - name: sku
+        description: "Stock Keeping Unit for the item"

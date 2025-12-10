@@ -10,12 +10,22 @@ profile: 'databricks_training'
 
 model-paths: ["models"]
 seed-paths: ["seeds"]
+macro-paths: ["macros"]
 
 target-path: "target"
 
+models:
+  dbt_training_project:
+    marts:
+      +materialized: table
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: table
+
 seeds:
   dbt_training_project:
-    raw_customers:
+    raw_customer:
       +column_types:
         id: varchar(255)
         name: varchar(255)

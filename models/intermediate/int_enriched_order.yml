@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: int_enriched_order
+    description: "Intermediate model that enriches order data with customer and item details."
+
+    columns:
+      - name: order_id
+        description: "Unique identifier for each order"
+        data_tests:
+          - not_null
+          - unique
+
+      - name: customer_id
+        description: "Unique identifier for the customer who placed the order"
+        data_tests:
+          - not_null
+
+      - name: customer_name
+        description: "Name of the customer who placed the order"
+
+      - name: ordered_at
+        description: "Timestamp when the order was placed"
+
+      - name: subtotal
+        description: "Subtotal amount of the order before tax"
+
+      - name: tax_paid
+        description: "Total tax paid for the order"
+
+      - name: order_total
+        description: "Total amount of the order including tax"
+
+      - name: store_id
+        description: "Unique identifier for the store where the order was placed"
+
+      - name: store_name
+        description: "Name of the store where the order was placed"
+
+      - name: store_opened_at
+        description: "Date when the store was opened"
+
+      - name: store_tax_rate
+        description: "Tax rate applicable at the store"
+
+
+
+      
