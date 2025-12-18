@@ -14,8 +14,8 @@ models:
       - name: customer_id
         description: "Identifier for the customer who placed the order"
 
-      - name: ordered_at
-        description: "Timestamp when the order was placed"
+      - name: order_date
+        description: "Date when the order was placed"
 
       - name: store_id
         description: "Identifier for the store where the order was placed"

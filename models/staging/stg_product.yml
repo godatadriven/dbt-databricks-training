@@ -19,8 +19,8 @@ models:
       - name: product_type
         description: "Type or category of the product"
 
-      - name: price
-        description: "Price of the product"
+      - name: selling_price
+        description: "Selling price of the product"
 
       - name: product_description
         description: "Description of the product"

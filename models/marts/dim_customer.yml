@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: dim_customer
+    description: "Dimension table for customer data."
+
+    columns:
+      - name: customer_id
+        data_type: varchar(255)
+        description: "Unique identifier for each customer"
+        data_tests:
+          - not_null
+          - unique
+
+      - name: customer_name
+        data_type: varchar(255)
+        description: "Full name of the customer"
+
+      - name: min_order_date
+        data_type: date
+        description: "The date of the customer's first order"
+
+      - name: max_order_date
+        data_type: date
+        description: "The date of the customer's most recent order"
+
+      - name: total_orders
+        data_type: integer
+        description: "Total number of orders placed by the customer"
+
+      - name: total_revenue
+        data_type: decimal(18,2)
+        description: "Total revenue generated from the customer"
