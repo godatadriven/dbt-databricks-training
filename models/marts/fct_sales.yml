@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: fct_sales
+    description: "Fact table for sales data including total sales amount per order, total cost, and margin."
+    config:
+      contract:
+        enforced: true
+    
+    columns:
+      - name: order_id
+        data_type: varchar(255)
+        description: "Unique identifier for each order"
+        data_tests:
+          - unique
+        constraints:
+          - type: not_null
+          - type: primary_key
+      - name: order_date
+        data_type: date
+        description: "Date when the order was placed"
+      - name: customer_id
+        data_type: varchar(255)
+        description: "Unique identifier for the customer who placed the order"
+      - name: customer_name
+        data_type: varchar(255)
+        description: "Name of the customer who placed the order"
+      - name: total_selling_price
+        data_type: decimal(18,2)
+        description: "Total selling price of all items in the order"
+      - name: total_cost
+        data_type: decimal(18,2)
+        description: "Total cost of all items in the order"
+      - name: total_margin
+        data_type: decimal(18,2)
+        description: "Total margin of all items in the order"

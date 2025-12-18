@@ -8,7 +8,7 @@ select
     o.order_id,
     o.customer_id,
     c.customer_name,
-    o.ordered_at,
+    o.order_date,
     o.subtotal,
     o.tax_paid,
     o.order_total,

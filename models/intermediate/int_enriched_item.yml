@@ -1,0 +1,36 @@
+version: 2
+
+models:
+  - name: int_enriched_item
+    description: "Intermediate model for enriched item data with product details and supply information"
+
+    columns:
+      - name: item_id
+        description: "Unique identifier for each item/product"
+        data_tests:
+          - not_null
+          - unique
+
+      - name: order_id
+        description: "Identifier for the order associated with the item/product"
+
+      - name: sku
+        description: "Stock Keeping Unit for the item/product"
+
+      - name: product_name
+        description: "Name of the item/product"
+
+      - name: product_type
+        description: "Category or type of the item/product"
+
+      - name: product_description
+        description: "Detailed description of the item/product"
+
+      - name: selling_price
+        description: "Selling price of the item/product"
+
+      - name: cnt_supplies
+        description: "Count of supplies needed for the item/product"
+      
+      - name: total_supply_cost
+        description: "Total cost of supplies for the item/product"
