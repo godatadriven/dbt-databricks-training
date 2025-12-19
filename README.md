@@ -57,3 +57,48 @@ To successfully enforce a contract in dbt on Databricks, keep these three requir
 3.  **Production Stability:** Use contracts for your Marts layer to maintain a "fixed" API for your BI tools. This ensures that upstream changes do not unexpectedly break your downstream dashboards.
 
 ---
+
+## 🔐 Environment Isolation & Profile Best Practices
+
+Below you'll find some of the best practices leveraging dbt and the Databricks Unity Catalog.
+
+### Developer Schema Isolation
+To avoid "collisions" where developers overwrite each other's data, every team member uses their own dedicated schemas for every layer.
+* **Naming Convention:** `dbt_<user>_dev_<layer>`
+* **Examples:** * `dbt_developername_dev_stg`
+    * `dbt_developername_dev_int`
+    * `dbt_developername_dev_marts`
+
+### Production Protection
+The **Production** environment is a protected zone.
+* **Restricted Access:** No developer has `CREATE` or `MODIFY` permissions in the production catalog.
+* **CI/CD Only:** Changes to production schemas (e.g., `prod_stg`, `prod_int`, and `prod_marts`) can **only** be executed by the Service Principal via a CI/CD pipeline (e.g., GitHub Actions).
+* **Validation:** All code must pass data contracts and tests in a Pull Request (PR) schema before being merged to production.
+
+---
+
+## 🚀 Databricks Performance & Governance
+
+### 1. Liquid Clustering
+For high-volume tables in the Marts layer, use **Liquid Clustering** instead of manual partitioning or Z-Ordering. This provides the best performance for concurrent queries and data skipping.
+  ```yaml
+    +cluster_by: ["customer_id", "transaction_date"]
+  ```
+### 2. Unity Catalog & Governance
+Unity Catalog provides a central place to manage data access and track lineage.
+
+Three-Tier Namespace: Models are structured using <catalog>.<schema>.<table_name> for clear ownership.
+
+Column-Level Lineage: By using dbt with Unity Catalog, Databricks automatically visualizes how data flows from raw staging models into final business marts.
+
+### 3. Incremental Strategy (Merge)
+For large datasets, use the merge incremental strategy. This ensures that only new or updated records are processed, significantly reducing compute costs compared to a full refresh.
+
+```sql
+{{ config(
+    materialized='incremental',
+    unique_key='order_id',
+    incremental_strategy='merge',
+    on_schema_change='fail'
+) }}
+```
